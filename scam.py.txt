@@ -1,4 +1,5 @@
 import Image
+import speech_recognition as sr
 import winsound
 import pyautogui
 import pytesseract
