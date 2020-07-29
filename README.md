@@ -4,7 +4,7 @@ This bot gets the meeting id of your meeting from google docs(you need a friend 
 It can use both speech recognition and image processing techniques to interact with other people in the meeting.<br />
 Once the meeting is done, it closes the google chrome page and this process continues every time you have an online class to attend <br />
 Speech recognition is used to identify whether your enrollment number is being called out during attendance and the bot automatically types "present" in the chatbox<br />
-Image processing is used to convert all the messages in the chatbox into an array of strings and uses some rudimentary NLP techniques to prepare a suitable reply based on the same.<br />
+Image processing is used to convert all the messages in the chatbox into an array of strings and uses some string manipulation techniques to find the most common phrase most of the students said and type it in the chat box. For expample if 5 kids said the asnswer was "11.5", the bot will type this answer on the chatbox<br />
 
 Libraries used:<br />
 1)Image:
