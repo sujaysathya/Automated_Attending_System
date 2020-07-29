@@ -39,5 +39,5 @@ Places to improve:<br />
 Currently planning on making a chat bot which can hopefully have full fleged converstations.<br />
 Please contribute and make this better lads.<br />
 
-
+[![HitCount](http://hits.dwyl.com/sujaysathya/bunk_bot.svg)](http://hits.dwyl.com/sujaysathya/bunk_bot)
 
