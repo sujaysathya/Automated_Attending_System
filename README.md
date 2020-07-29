@@ -1,4 +1,4 @@
-                                                         THE BUNK BOT:<br />
+                                                              THE BUNK BOT 
 The bunk bot is built on python and its main purpose is to attend your online class for you.<br />
 This bot gets the meeting id of your meeting from google docs(you need a friend to upload this for you) and opens google meet and logs in on your behalf.<br />
 It can use both speech recognition and image processing techniques to interact with other people in the meeting.<br />
