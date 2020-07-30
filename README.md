@@ -20,7 +20,7 @@ Once the meeting is done, it closes the Google Chrome page and this process cont
 Libraries used:
 1) <b>Image:</b>
 Used for image processing.
-View the documentation [here.](https://pillow.readthedocs.io/en/stable/)\
+View the documentation [here.](https://pillow.readthedocs.io/en/stable/)
 
 2) <b>WinSound:</b>
 Can be used for playing a pre-recorded voice note of yourself saying "present". In this project, it has been used for signalling purposes.
