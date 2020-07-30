@@ -146,7 +146,7 @@ def parseMessageBuffer(msgBuffer):
 # when compared to the old image.
 #
 # When opt is set to 0, it returns the number of new Message Objects that have been created.
-# 
+#
 # When opt is set to 1, it adds up the total number of new individual messages within
 # all the new message objects.
 def returnComparison(oldImage, newImage, opt):
