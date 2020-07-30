@@ -53,7 +53,19 @@ View the documentation [here.](https://pypi.org/project/SpeechRecognition/)
 9) <b>PyAudio:</b>
 Used to access the microphone.
 View the documentation [here.](https://people.csail.mit.edu/hubert/pyaudio/docs/)
+#### Compatability
 
+Changing the coordinates in pyautogui is more than enough to implement this code on google meet,zoom,microsoft teams or any other software you use to attend class<br>
+
+
+#### CHANGES YOU HAVE TO MAKE 
+
+<p>A small amount of the code you see in this program is hardcoded w.r.t to my pc.
+Changes that you have to make to implement this on your pc are:<p\>
+
+1)Change all the coordinates that pyautogui uses. Refer to help.py to find the coordinates which are suitable for you(if you didnt understand any of this, please read the pyautogui documentation).<br>
+2)Change all the file paths.<br>
+3)Change the size of the crop in crop=img1[280:911,1520:1900] to crop=img1[y1:y2,x1:x2] where x1,x2,y1 and y2 are coordinates of the chat bot in google meet or Zoom<br>
 
 #### Places to improve:
 Currently planning on making a chat bot which can hopefully have full fleged conversations.\
