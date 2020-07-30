@@ -74,8 +74,8 @@ Changes that you have to make to implement this on your computer are:<p\>
 
 These changes can be made in the global variables that is mentioned in the bunk_bot.py file. Can be found in the 15th line.
 
-#Fixes
-unknown exception thrown during image processing has been handeled  
+#### Fixes and Patches:
+An unknown exception thrown during image processing has been handled  
 
 #### Places to improve:
 Currently planning on making a ChatBot which can hopefully have full fleged conversations.\
