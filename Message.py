@@ -1,5 +1,4 @@
-from HelperFunctions import getnametime
-
+import re
 
 class Message:
     """
@@ -33,3 +32,14 @@ class Message:
 
     def getmessages(self):
         return self.strings
+
+def getnametime(x):
+    """
+    This is a function that receives strings in the format of "Name HH:MM AM/PM".
+    For example, "Roman Atwood 11:52 PM".
+    From the above string, the function would return "Roman Atwood" and "11:52 PM"
+    :param x:
+    :return:
+    """
+    matchobj = re.search( "(.+)(\d?\d:\d{2}\s*[AP]M)", x )
+    return matchobj.group( 1 ), matchobj.group( 2 )

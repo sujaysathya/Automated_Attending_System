@@ -32,12 +32,6 @@ def returnMostCommonWord(imageName):
     a1, b1 = most_frequent( listOfWords )
     return a1, b1
 
-          
-
-
-
-
-
 
 def returnComparison(oldImage, newImage, opt):
     """

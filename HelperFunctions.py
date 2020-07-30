@@ -1,24 +1,11 @@
 import re
 from collections import Counter
 from time import sleep
-
 import pyautogui
 import pytesseract
 from PIL import Image
 
 from Message import Message
-
-
-def getnametime(x):
-    """
-    This is a function that receives strings in the format of "Name HH:MM AM/PM".
-    For example, "Roman Atwood 11:52 PM".
-    From the above string, the function would return "Roman Atwood" and "11:52 PM"
-    :param x:
-    :return:
-    """
-    matchobj = re.search( "(.+)(\d?\d:\d{2}\s*[AP]M)", x )
-    return matchobj.group( 1 ), matchobj.group( 2 )
 
 
 def most_frequent(List):
