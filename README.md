@@ -73,7 +73,7 @@ Please contribute and make this better lads.
 
 <h3>PLEASE NOTE:</h3>
 <p>For legal reasons,<br>
-This bot was purely made for <b><i>eductional</i></b> purposes only and is meant as a fun way to learn and implement the libraries/packages mentioned above. <br>
+This bot was purely made for <b><i>educational</i></b> purposes only and is meant as a fun way to learn and implement the libraries/packages mentioned above. <br>
 This bot is not meant to be used in any malicious way and we are not responsible for anyone actually using this bot to wrongfully attend online classes on his/her/their behalf.</p>
 
 
