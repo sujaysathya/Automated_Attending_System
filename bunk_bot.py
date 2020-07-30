@@ -12,7 +12,7 @@ from HelperFunctions import returnComparatorList, most_frequent, pyautoguiMoveCl
 
 # Retrieving the link from the google docs file
 
-# Please Edit these Global variables as necessary
+# PLEASE Edit these Global variables as necessary
 filelocation = "C:\\Users\\sujay sathya\\Downloads\\zm.txt"
 x11, y11, x12, y12, x13, y13 = 1625, 156, 1694, 976, 1872, 985
 

@@ -10,7 +10,7 @@
 
 <p>The <b><i>Bunk Bot</i></b> is built on Python and its main purpose is to attend your online classes <i>for you</i>.
  
-This bot gets the meeting ID of your meeting from Google Docs (note that you need a friend to upload this for you) and opens Google Meet and logs in on your behalf.
+This bot gets the meeting ID of your meeting from Google Docs (note: your friend can upload this for you if you can't) and opens Google Meet and logs in on your behalf.
 
 It can use both Speech Recognition and Image Processing techniques to interact with other people in the meeting.
 
@@ -71,6 +71,8 @@ Changes that you have to make to implement this on your computer are:<p\>
 1) Change all the coordinates that PyAutoGUI uses. Refer to `coordinate_finder.py` to find the coordinates which are suitable for you (if you didn't understand any of this, please read the PyAutoGUI documentation).<br>
 2) Change all the file paths.<br>
 3) Change the size of the crop in `crop=img1[280:911,1520:1900]` to `crop=img1[y1:y2,x1:x2]` where `x1`, `x2`, `y1` and `y2` are coordinates of the chatbox in the online classroom software (i.e Google Meet/ Zoom etc.)<br>
+
+These changes can be made in the global variables that is mentioned in the bunk_bot.py file. Can be found in the 15th line.
 
 #### Places to improve:
 Currently planning on making a ChatBot which can hopefully have full fleged conversations.\
