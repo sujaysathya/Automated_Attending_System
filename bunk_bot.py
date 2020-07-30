@@ -6,31 +6,35 @@ import pytesseract
 import re
 import cv2
 
-from time import sleep
-from datetime import datetime
+from time import sleep, time
+#from datetime import datetime
 
 # theres a "tesseract.exe" file you need to download if you use this on windows
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
 #The next five lines of code are used to find the time at which the code begings to execute
+a=time()
+''' Old complicated way
 now1 = datetime.now()
 
-dt_string1 = now1.strftime(" %H %M ")
-hour1 =int(dt_string1[1:3])
-minn1=int(dt_string1[4:])
-a=dt.timedelta(hours=hour1, minutes=minn1)
+#dt_string1 = now1.strftime(" %H %M ")
+hour1 = now1.hour   #this is a huge improvement, but not as big as time()
+minn1 = now1.minute #this is a huge improvement, but not as big as time()
+a=dt.timedelta(hours=hour1, minutes=minn1)'''
 
 #The clock function returns the amount of time that had passed since the code had begun execution in minutes
 def clock():
+    return (time()-a)//60
+    ''' Old complicated way
     now2 = datetime.now()
-    dt_string2 = now2.strftime(" %H %M ")
-    hour2 =int(dt_string2[1:3])
-    minn2=int(dt_string2[4:])
+    #dt_string2 = now2.strftime(" %H %M ")
+    hour2 = now2.hour   #this is a huge improvement, but not as big as time()
+    minn2 = now2.minute #this is a huge improvement, but not as big as time()
     b = dt.timedelta(hours=hour2, minutes=minn2)
     c=b-a
     d=str(c)
     e=int(d[2:4])
-    return(e)
+    return(e)'''
 
 def getnametime(x):
     matchobj = re.search("(.+)(\d?\d:\d{2}\s*[AP]M)", x)
@@ -100,36 +104,20 @@ def returnComparatorList(imageName):
         if(regex_flag[i] == 0):
             messagesBuffer.append(str_list[i])
         else:
-
-            messageObj = Message(messagesBuffer)
-
-            x = []
-
-            x.append(messageObj.getname())
-
-            x.append(messageObj.gettime())
-
-            x.append(messageObj.getmessages())
-
-            comparatorList.append(tuple(x))
-
+            comparatorList.append(parseMessageBuffer(messagesBuffer))
             messagesBuffer = []
-
             messagesBuffer.append(str_list[i])
-
-    messageObj = Message(messagesBuffer)
-
-    x = []
-
-    x.append(messageObj.getname())
-
-    x.append(messageObj.gettime())
-
-    x.append(messageObj.getmessages())
-
-    comparatorList.append(tuple(x))
-
+    comparatorList.append(parseMessageBuffer(messagesBuffer))
     return(comparatorList)
+
+# Takes a message from the buffer and returns a tuple for comparatorList.
+def parseMessageBuffer(msgBuffer):
+    msgObj = Message(msgBuffer)
+    x = []
+    x.append(msgObj.getname())
+    x.append(msgObj.gettime())
+    x.append(msgObj.getmessages())
+    return tuple(x)
 
 def returnComparison(oldImage, newImage, opt):
     print("printing old")
@@ -163,118 +151,182 @@ def returnMostCommonWord(imageName):
 #the coordinates given here are strictly w.r.t my computer screen size and where i have placed my icons
 #to find your own coordinates, read the pyautogui documentation
 
-x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6=690,1053,847,100,108,184,230,472,484,646,1917,0
+def pyautoguiMoveClickSleep(x_,y_,dur_,pause_,):
+    pyautogui.moveTo(x_,y_, duration=dur_)
+    pyautogui.click()
+    sleep(pause_)
 
-#positions the mouse on the google chrome app on the taskbar
-pyautogui.moveTo(x1,y1, duration=1)
+def pyautoguiMoveTypeSleep(x_,y_,dur_,pause_,link_):
+    pyautogui.moveTo(x_,y_, duration=dur_)
+    pyautogui.typewrite(link_,0)
+    sleep(pause_)
 
-pyautogui.click()
+x_list = [690,
+847,
+108,
+230,
+484,
+1917]
+y_list = [1053,
+100,
+184,
+472,
+646,
+0]
+dur_list = [1,1,1,0,0,0]
+pause_list = [3]*6
 
-sleep(3)
-
-#positions the mouse on the bookmark of the google document
-pyautogui.moveTo(x2,y2, duration=1)
-
-pyautogui.click()
-
-sleep(3)
-
-#positions the mouse on  "File" in the google docs
-pyautogui.moveTo(x3,y3, duration=1)
-
-pyautogui.click()
-
-sleep(3)
-
-#positions the mouse on  "download" after clicking on "File" in  google docs
-pyautogui.moveTo(x4,y4, duration=0)
-
-pyautogui.click()
-
-sleep(3)
-
-#positions the mouse on  "Plain text .txt" after clicking on "download" in  google docs
-pyautogui.moveTo(x5,y5, duration=0)
-
-pyautogui.click()
-
-sleep(3)
-
-
-#positions the mouse on the "X" on the top right corner of the brower to close it
-
-pyautogui.moveTo(x6,y6, duration=0)
-
-pyautogui.click()
+for i in range(len(x_list)):
+    pyautoguiMoveClickSleep(x_list[i],y_list[i],dur_list[i],pause_list[i])
+#
+# x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6=
+#
+#
+# #positions the mouse on the google chrome app on the taskbar
+# pyautogui.moveTo(x1,y1, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(3)
+#
+# #positions the mouse on the bookmark of the google document
+# pyautogui.moveTo(x2,y2, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(3)
+#
+# #positions the mouse on  "File" in the google docs
+# pyautogui.moveTo(x3,y3, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(3)
+#
+# #positions the mouse on  "download" after clicking on "File" in  google docs
+# pyautogui.moveTo(x4,y4, duration=0)
+#
+# pyautogui.click()
+#
+# sleep(3)
+#
+# #positions the mouse on  "Plain text .txt" after clicking on "download" in  google docs
+# pyautogui.moveTo(x5,y5, duration=0)
+#
+# pyautogui.click()
+#
+# sleep(3)
+#
+#
+# #positions the mouse on the "X" on the top right corner of the brower to close it
+#
+# pyautogui.moveTo(x6,y6, duration=0)
+#
+# pyautogui.click()
 
 #basically the same but to open google meet and enter a meeting
 #please read the pyautogui documentation if you dont understand this code
 
-x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10=701,1049,1026,99,1160,569,1129,601,1179,727,617,815,715,814,1322,619,1322,619,1913,0
+#x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10=
+
+
 
 #retriving the link from the google docs file
 fp = open("C:\\Users\\sujay sathya\\Downloads\\zm.txt","r+")
 
 link=fp.readline()
 
-pyautogui.moveTo(x1,y1, duration=1)
+x_list = [701,
+1026,
+1160,
+1129,
+1179,
+617,
+715,
+1322,
+1322,
+1913]
+y_list = [1049,
+99,
+569,
+601,
+727,
+815,
+814,
+619,
+619,
+0]
+dur_list = [1]*10]
+pause_list = [5]*6 + [10]*2 + [20,0]
 
-pyautogui.click()
 
-sleep(5)
+for i in range(len(x_list)):
+    if i == 9:
+        continue
+    if i =! 5:
+        pyautoguiMoveClickSleep(x_list[i],y_list[i],dur_list[i],pause_list[i])
+        continue
+    pyautoguiMoveTypeSleep(x_list[i],y_list[i],dur_list[i],pause_list[i],link)
 
-pyautogui.moveTo(x2,y2, duration=1)
-
-pyautogui.click()
-
-sleep(5)
-
-pyautogui.moveTo(x3,y3, duration=1)
-
-pyautogui.click()
-
-sleep(5)
-
-pyautogui.moveTo(x4,y4, duration=1)
-
-pyautogui.typewrite(link,0)
-
-sleep(5)
-
-pyautogui.moveTo(x5,y5, duration=1)
-
-pyautogui.click()
-
-sleep(5)
-
-pyautogui.moveTo(x6,y6, duration=1)
-
-pyautogui.click()
-
-sleep(5)
-
-pyautogui.moveTo(x7,y7, duration=1)
-
-pyautogui.click()
-
-sleep(10)
-
-pyautogui.moveTo(x8,y8, duration=1)
-
-pyautogui.click()
-
-sleep(10)
-
-pyautogui.moveTo(x9,y9, duration=1)
-
-pyautogui.click()
-
-sleep(10)
+#
+# pyautogui.moveTo(x1,y1, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(5)
+#
+# pyautogui.moveTo(x2,y2, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(5)
+#
+# pyautogui.moveTo(x3,y3, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(5)
+#
+# pyautogui.moveTo(x4,y4, duration=1)
+#
+# pyautogui.typewrite(link,0)
+#
+# sleep(5)
+#
+# pyautogui.moveTo(x5,y5, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(5)
+#
+# pyautogui.moveTo(x6,y6, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(5)
+#
+# pyautogui.moveTo(x7,y7, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(10)
+#
+# pyautogui.moveTo(x8,y8, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(10)
+#
+# pyautogui.moveTo(x9,y9, duration=1)
+#
+# pyautogui.click()
+#
+# sleep(10)
 
 #now we have entered a google meeting and opened the chat box
 
 
-sleep(10)
+#sleep(10)
 
 
 
