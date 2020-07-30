@@ -104,6 +104,8 @@ if __name__ == "__main__":
     y_list = [1049, 99, 569, 601, 727, 815, 814, 619, 619, 0]
     dur_list = [1] * 10
     pause_list = [5] * 6 + [10] * 2 + [20, 0]
+    x10=x_list[9]
+    y10=y_list[9]
 
     for i in range( len( x_list ) ):
         if i == 9:
