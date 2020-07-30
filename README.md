@@ -1,7 +1,8 @@
 <h2 align = 'center'>THE BUNK BOT</h2>
 
-[![HitCount](http://hits.dwyl.com/sujaysathya/bunk_bot.svg?style=flat)](http://hits.dwyl.com/sujaysathya/bunk_bot) ![language python](https://img.shields.io/badge/Language-Python-blue) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?)](https://github.com/sujaysathya/bunk_bot/issues) [![GitHub stars](https://img.shields.io/github/stars/sujaysathya/bunk_bot?color=green)](https://github.com/sujaysathya/bunk_bot/stargazers) [![GitHub forks](https://img.shields.io/github/forks/sujaysathya/bunk_bot?color=green)](https://github.com/sujaysathya/bunk_bot/network) [![GitHub issues](https://img.shields.io/github/issues/sujaysathya/bunk_bot)](https://github.com/sujaysathya/bunk_bot/issues) 
-
+[![HitCount](http://hits.dwyl.com/sujaysathya/bunk_bot.svg?style=flat)](http://hits.dwyl.com/sujaysathya/bunk_bot)
+[![GitHub stars](https://img.shields.io/github/stars/sujaysathya/bunk_bot?color=green)](https://github.com/sujaysathya/bunk_bot/stargazers) 
+[![GitHub forks](https://img.shields.io/github/forks/sujaysathya/bunk_bot?color=green)](https://github.com/sujaysathya/bunk_bot/network)
 
 <p>The <b><i>Bunk Bot</i></b> is built on Python and its main purpose is to attend your online classes <i>for you</i>.
  
@@ -53,22 +54,22 @@ View the documentation [here.](https://pypi.org/project/SpeechRecognition/)
 9) <b>PyAudio:</b>
 Used to access the microphone.
 View the documentation [here.](https://people.csail.mit.edu/hubert/pyaudio/docs/)
-#### Compatability:
+#### Compatibility:
 
-Changing the coordinates in pyautogui is more than enough to implement this code on google meet,zoom,microsoft teams or any other software you use to attend class<br>
+Changing the coordinates in pyautogui is more than enough to implement this code on Google Meet, Zoom Meetings, Microsoft Teams or any other software you use to attend class.<br>
 
 
 #### CHANGES YOU HAVE TO MAKE:
 
-<p>A small amount of the code you see in this program is hardcoded w.r.t to my pc.
-Changes that you have to make to implement this on your pc are:<p\>
+<p>A small amount of the code you see in this repository is hardcoded w.r.t to my computer.
+Changes that you have to make to implement this on your computer are:<p\>
 
-1)Change all the coordinates that pyautogui uses. Refer to coordinate_finder.py to find the coordinates which are suitable for you(if you didnt understand any of this, please read the pyautogui documentation).<br>
-2)Change all the file paths.<br>
-3)Change the size of the crop in crop=img1[280:911,1520:1900] to crop=img1[y1:y2,x1:x2] where x1,x2,y1 and y2 are coordinates of the chatbox in google meet or Zoom<br>
+1) Change all the coordinates that PyAutoGUI uses. Refer to `coordinate_finder.py` to find the coordinates which are suitable for you (if you didn't understand any of this, please read the PyAutoGUI documentation).<br>
+2) Change all the file paths.<br>
+3) Change the size of the crop in `crop=img1[280:911,1520:1900]` to `crop=img1[y1:y2,x1:x2]` where `x1`, `x2`, `y1` and `y2` are coordinates of the chatbox in the online classroom software (i.e Google Meet/ Zoom etc.)<br>
 
 #### Places to improve:
-Currently planning on making a chat bot which can hopefully have full fleged conversations.\
+Currently planning on making a ChatBot which can hopefully have full fleged conversations.\
 Please contribute and make this better lads.
 
 <h3>PLEASE NOTE:</h3>
