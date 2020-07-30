@@ -53,12 +53,12 @@ View the documentation [here.](https://pypi.org/project/SpeechRecognition/)
 9) <b>PyAudio:</b>
 Used to access the microphone.
 View the documentation [here.](https://people.csail.mit.edu/hubert/pyaudio/docs/)
-#### Compatability
+#### Compatability:
 
 Changing the coordinates in pyautogui is more than enough to implement this code on google meet,zoom,microsoft teams or any other software you use to attend class<br>
 
 
-#### CHANGES YOU HAVE TO MAKE 
+#### CHANGES YOU HAVE TO MAKE:
 
 <p>A small amount of the code you see in this program is hardcoded w.r.t to my pc.
 Changes that you have to make to implement this on your pc are:<p\>
