@@ -65,7 +65,7 @@ Changes that you have to make to implement this on your pc are:<p\>
 
 1)Change all the coordinates that pyautogui uses. Refer to help.py to find the coordinates which are suitable for you(if you didnt understand any of this, please read the pyautogui documentation).<br>
 2)Change all the file paths.<br>
-3)Change the size of the crop in crop=img1[280:911,1520:1900] to crop=img1[y1:y2,x1:x2] where x1,x2,y1 and y2 are coordinates of the chat bot in google meet or Zoom<br>
+3)Change the size of the crop in crop=img1[280:911,1520:1900] to crop=img1[y1:y2,x1:x2] where x1,x2,y1 and y2 are coordinates of the chatbox in google meet or Zoom<br>
 
 #### Places to improve:
 Currently planning on making a chat bot which can hopefully have full fleged conversations.\
