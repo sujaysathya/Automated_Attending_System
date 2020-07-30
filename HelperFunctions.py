@@ -1,6 +1,7 @@
 import re
 from collections import Counter
 from time import sleep
+
 import pyautogui
 import pytesseract
 from PIL import Image
@@ -8,58 +9,109 @@ from PIL import Image
 from Message import Message
 
 
+
 def most_frequent(List):
-    """
-    returns most frequent element in a list, along with its frequency
-    :param List:
-    :return:
-    """
-    occurence_count = Counter( List )
-    num, counter = occurence_count.most_common( 1 )[0]
-    return num, counter
+    counter = 0
+    num = List[0]
+
+    for i in List:
+        curr_frequency = List.count(i)
+        if(curr_frequency> counter):
+            counter = curr_frequency
+            num = i
+
+    return num,counter
+
+# returns str list with corresponding regex flags
+def returnStrAndRegexList(imageName):
+
+    strin = pytesseract.image_to_string(Image.open(imageName))
+    str_list = strin.splitlines()
+    for string in str_list:
+        if(len(string) == 0):
+            str_list.remove(string)
+    regex_flag = [0] * len(str_list)
+
+    for i in range(len(regex_flag)):
+        if(re.search("\d?\d:\d{2}\s*[AP]M", str_list[i])):
+            regex_flag[i] = 1
+    while(regex_flag[0] == 0):
+        regex_flag.pop(0)
+        str_list.pop(0)
+    return(str_list, regex_flag)
 
 
-def parseMessageBuffer(msgBuffer):
-    """
-    Takes a message from the buffer and returns a tuple for comparatorList.
-    :param msgBuffer:
-    :return:
-    """
-    msgObj = Message( msgBuffer )
-    x = []
-    x.append( msgObj.getname() )
-    x.append( msgObj.gettime() )
-    x.append( msgObj.getmessages() )
-    return tuple( x )
-
-
+# should return what to reply
 def returnComparatorList(imageName):
-    """
-    returns a nested list of messages in tuples, so they can easily compared in returnComparison
-    :param imageName:
-    :return:
-    """
-    str_list, regex_flag = returnstrandregexlist(
-        imageName )  # calls returnStrAndRegexList() to receive str_list and regex_flag for the given image.
 
-    # just a loop to print out regex_flag and str_list to check for Debugging purposes
-    # for i in range(len(str_list)):
-    #     print(str(regex_flag[i]) + " " + str_list[i])
-    # print('')
+    str_list, regex_flag = returnStrAndRegexList(imageName)
+
+    for i in range(len(str_list)):
+        print(str(regex_flag[i]) + " " + str_list[i])
+
+    print('')
 
     messagesBuffer = []
     comparatorList = []
-    messagesBuffer.append( str_list[0] )
-    for i in range( 1, len( str_list ) ):
-        if (regex_flag[i] == 0):
-            messagesBuffer.append( str_list[i] )
+    messagesBuffer.append(str_list[0])
+    for i in range(1, len(str_list)):
+        if(regex_flag[i] == 0):
+            messagesBuffer.append(str_list[i])
         else:
-            comparatorList.append( parseMessageBuffer( messagesBuffer ) )
-            messagesBuffer = []
-            messagesBuffer.append( str_list[i] )
-    comparatorList.append( parseMessageBuffer( messagesBuffer ) )
-    return (comparatorList)
+            messageObj = Message(messagesBuffer)
 
+            x = []
+            x.append(messageObj.getname())
+            x.append(messageObj.gettime())
+            x.append(messageObj.getmessages())
+            comparatorList.append(tuple(x))
+
+            messagesBuffer = []
+            messagesBuffer.append(str_list[i])
+
+    messageObj = Message(messagesBuffer)
+
+    x = []
+    x.append(messageObj.getname())
+    x.append(messageObj.gettime())
+    x.append(messageObj.getmessages())
+    comparatorList.append(tuple(x))
+
+    return(comparatorList)
+
+def returnComparison(oldImage, newImage, opt):
+    print("printing old")
+    x = returnComparatorList(oldImage)
+    print("printing new")
+    y = returnComparatorList(newImage)
+
+    
+
+    set_difference = set(y) - set(x)
+    list_difference = list(set_difference)
+
+
+    if(opt == 0):
+        return(len(list_difference))
+    elif(opt == 1):
+        lentot = 0
+        for element in list_difference:
+            lentot += len(element[2])
+        return(lentot)
+
+def returnMostCommonWord(imageName):
+    print("before function call of rmc")
+    x = returnComparatorList(imageName)
+    print("after function call of rmc")
+    listOfWords = []
+    for i in x:
+        for j in i[2]:
+            listOfWords.append(j)
+    print("after for loop call")
+
+    a1,b1=most_frequent(listOfWords)
+    print("after return of a1,b1")
+    return(a1,b1)
 
 def pyautoguiMoveClickSleep(x_, y_, dur_, pause_):
     pyautogui.moveTo( x_, y_, duration=dur_ )
@@ -71,47 +123,3 @@ def pyautoguiMoveTypeSleep(x_, y_, dur_, pause_, link_):
     pyautogui.moveTo( x_, y_, duration=dur_ )
     pyautogui.typewrite( link_, 0 )
     sleep( pause_ )
-
-
-def returnstrandregexlist(imageName):
-    """
-    This function receives a filename of an image as input and returns two lists.
-    The first list is called str_list.
-    It splits the entire image into a list of lines and spits it out.
-    The second list is called regex_flag.
-    This list is the same length as str_list.
-    It contains flags corresponding to every element of 1.
-    If str_list[i] satisfies the given regex filter (eg "11:52 AM"), regex_flag[i] is 1.
-    otherwise it is 0.
-    :param imageName:
-    :return:
-    """
-    # reading a long string from the image
-    strin = pytesseract.image_to_string( Image.open( imageName ) )
-
-    # splitting that long string into many lines
-    str_list = strin.splitlines()
-
-    # removing blank lines from str_list
-    for string in str_list:
-        if len( string ) == 0:
-            str_list.remove( string )
-
-    # initializing regex_flag with 0s
-    regex_flag = [0] * len( str_list )
-
-    # going through entire str_list to set regex flags for lines that
-    # satisfy the given condition
-    for i in range( len( regex_flag ) ):
-        if re.search( "\d?\d:\d{2}\s*[AP]M", str_list[i] ):
-            regex_flag[i] = 1
-
-    # if regex_flag does not start with 1, ie, the str_list does not start with a timestamp,
-    # elements from the beginning of both lists are popped
-    # until a 1 is reached.
-    while regex_flag[0] == 0:
-        regex_flag.pop( 0 )
-        str_list.pop( 0 )
-
-    # both lists are returned
-    return str_list, regex_flag
