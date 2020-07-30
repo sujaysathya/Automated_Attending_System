@@ -1,0 +1,9 @@
+Image==7.2.0              # via PIL           
+PyAutoGUI==0.9.50
+numpy==1.18.5
+re==7.2.1          
+cv2==4.4.0                        
+seaborn==0.10.1
+SpeechRecognition==3.8.1
+PyAudio==0.2.11  
+PyTesseract==0.3.4
