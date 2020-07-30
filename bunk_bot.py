@@ -161,18 +161,8 @@ def pyautoguiMoveTypeSleep(x_,y_,dur_,pause_,link_):
     pyautogui.typewrite(link_,0)
     sleep(pause_)
 
-x_list = [690,
-847,
-108,
-230,
-484,
-1917]
-y_list = [1053,
-100,
-184,
-472,
-646,
-0]
+x_list = [690,847,108,230,484,1917]
+y_list = [1053,100,184,472,646,0]
 dur_list = [1,1,1,0,0,0]
 pause_list = [3]*6
 
@@ -233,32 +223,12 @@ for i in range(len(x_list)):
 
 #retriving the link from the google docs file
 fp = open("C:\\Users\\sujay sathya\\Downloads\\zm.txt","r+")
-
 link=fp.readline()
 
-x_list = [701,
-1026,
-1160,
-1129,
-1179,
-617,
-715,
-1322,
-1322,
-1913]
-y_list = [1049,
-99,
-569,
-601,
-727,
-815,
-814,
-619,
-619,
-0]
+x_list = [701,1026,1160,1129,1179,617,715,1322,1322,1913]
+y_list = [1049,99,569,601,727,815,814,619,619,0]
 dur_list = [1]*10]
-pause_list = [5]*6 + [10]*2 + [20,0]
-
+pause_list = [5]*6 +[10]*2 + [20,0]
 
 for i in range(len(x_list)):
     if i == 9:
