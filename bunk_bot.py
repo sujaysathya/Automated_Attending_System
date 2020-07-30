@@ -125,13 +125,13 @@ if __name__ == "__main__":
 
     # the image processing algorithm works only of for the first 40 minutes of the lecture
     while clock() != 40:
-        sleep( 20 )
+        sleep( 200 )
         im2 = pyautogui.screenshot( "ss2.png" )
         img2 = cv2.imread( 'ss2.png' )
         crop2 = img2[280:911, 1520:1900]
         cv2.imwrite( "ss2.png", crop2 )
         try:
-            if returnComparison( "ss1.png", "ss2.png", 1 ) > 5:
+            if returnComparison( "ss1.png", "ss2.png", 0 ) > 5:
                 a1, b1 = returnMostCommonWord( "ss2.png" )
                 if b1 > 3:
                     # specific locations w.r.t the chat box in google meet
