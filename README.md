@@ -60,7 +60,7 @@ Used to access the microphone.
 View the documentation [here.](https://people.csail.mit.edu/hubert/pyaudio/docs/)
 #### Compatibility:
 
-Changing the coordinates in pyautogui is more than enough to implement this code on Google Meet, Zoom Meetings, Microsoft Teams or any other software you use to attend class.<br>
+Changing the coordinates in PyAutoGUI is more than enough to implement this code on Google Meet, Zoom Meetings, Microsoft Teams or any other software you use to attend class.<br>
 
 
 #### CHANGES YOU HAVE TO MAKE:
@@ -74,6 +74,7 @@ Changes that you have to make to implement this on your computer are:<p\>
 
 #### Places to improve:
 Currently planning on making a ChatBot which can hopefully have full fleged conversations.\
+You can provide your suggestions on this [here.](https://github.com/sujaysathya/bunk_bot/issues/5)\
 Please contribute and make this better lads.
 
 <h3>PLEASE NOTE:</h3>
