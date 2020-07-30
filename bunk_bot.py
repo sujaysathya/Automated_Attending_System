@@ -10,28 +10,30 @@ from time import sleep, time
 #from datetime import datetime
 
 # theres a "tesseract.exe" file you need to download if you use this on windows
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+# pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
 
-#The next five lines of code are used to find the time at which the code begings to execute
-a=time()
-
-
-#The clock function returns the amount of time that had passed since the code had begun execution in minutes
-def clock():
-    return (time()-a)//60
-    
-
+# This is a function that receives strings in the format of "Name HH:MM AM/PM".
+# For example, "Roman Atwood 11:52 PM".
+# From the above string, the function would return "Roman Atwood" and "11:52 PM"
 def getnametime(x):
     matchobj = re.search("(.+)(\d?\d:\d{2}\s*[AP]M)", x)
     return(matchobj.group(1), matchobj.group(2))
 
+# This is a Message class.
+# It consists of three attributes.
+# strings are all the messages that the particular person has sent.
+# name is the name of the person sending the messages
+# time is the time at which the messages were sent by the person
 class Message:
+
     def __init__(self, strings):
         self.strings = []
         self.strings.extend(strings)
         self.name, self.time = getnametime(strings[0])
         self.strings.pop(0)
         self.strings = tuple(self.strings)
+
+    # simple function to show the name, time and messages of the object
     def show(self):
         print("Name: " + self.name)
         print("Time: " + self.time)
@@ -40,15 +42,18 @@ class Message:
             print(i)
         print('')
 
+    # series of functions to receive name, time, and messages
+
     def getname(self):
         return(self.name)
 
     def gettime(self):
         return(self.time)
+
     def getmessages(self):
         return(self.strings)
 
- # returns most frequent element in a list
+# returns most frequent element in a list, along with its frequency.
 def most_frequent(List):
     counter = 0
     num = List[0]
@@ -59,29 +64,59 @@ def most_frequent(List):
             num = i
     return num,counter
 
-# returns str list with corresponding regex flags
+# This function receives a filename of an image as input and returns two lists.
+# The first list is called str_list.
+# It splits the entire image into a list of lines and spits it out.
+# The second list is called regex_flag.
+# This list is the same length as str_list.
+# It contains flags corresponding to every element of 1.
+# If str_list[i] satifies the given regex filter (eg "11:52 AM"), regex_flag[i] is 1.
+# otherwise it is 0.
 def returnStrAndRegexList(imageName):
+
+    # reading a long string from the image
     strin = pytesseract.image_to_string(Image.open(imageName))
+
+    # splitting that long string into many lines
     str_list = strin.splitlines()
+
+    # removing blank lines from str_list
     for string in str_list:
         if(len(string) == 0):
             str_list.remove(string)
+
+    # initializing regex_flag with 0s
     regex_flag = [0] * len(str_list)
+
+    # going through entire str_list to set regex flags for lines that
+    # satisfy the given condition
     for i in range(len(regex_flag)):
         if(re.search("\d?\d:\d{2}\s*[AP]M", str_list[i])):
             regex_flag[i] = 1
+
+    # if regex_flag does not start with 1, ie, the str_list does not start with a timestamp,
+    # elements from the beginning of both lists are popped
+    # until a 1 is reached.
     while(regex_flag[0] == 0):
         regex_flag.pop(0)
         str_list.pop(0)
+
+    # both lists are returned
     return(str_list, regex_flag)
 
 
-# should return what to reply
+# returns a nested list of messages in tuples, so they can easily compared in returnComparison
 def returnComparatorList(imageName):
+
+    # calls returnStrAndRegexList() to receive str_list and regex_flag for the given image.
     str_list, regex_flag = returnStrAndRegexList(imageName)
-    for i in range(len(str_list)):
-        print(str(regex_flag[i]) + " " + str_list[i])
-    print('')
+
+    # just a loop to print out regex_flag and str_list to check
+    # for i in range(len(str_list)):
+    #     print(str(regex_flag[i]) + " " + str_list[i])
+    # print('')
+
+
     messagesBuffer = []
     comparatorList = []
     messagesBuffer.append(str_list[0])
@@ -104,10 +139,18 @@ def parseMessageBuffer(msgBuffer):
     x.append(msgObj.getmessages())
     return tuple(x)
 
+# This function accepts three parameters -> oldImage, newImage and opt.
+# oldImage and newImage are filenames to the older image, and the new image.
+#
+# The function should return the number of new messages that have appeared in the new image,
+# when compared to the old image.
+#
+# When opt is set to 0, it returns the number of new Message Objects that have been created.
+#
+# When opt is set to 1, it adds up the total number of new individual messages within
+# all the new message objects.
 def returnComparison(oldImage, newImage, opt):
-    print("printing old")
     x = returnComparatorList(oldImage)
-    print("printing new")
     y = returnComparatorList(newImage)
     set_difference = set(y) - set(x)
     list_difference = list(set_difference)
@@ -119,22 +162,27 @@ def returnComparison(oldImage, newImage, opt):
             lentot += len(element[2])
         return(lentot)
 
+# returns the most common message in the image along with its frequency
 def returnMostCommonWord(imageName):
-    print("before function call of rmc")
     x = returnComparatorList(imageName)
-    print("after function call of rmc")
     listOfWords = []
     for i in x:
         for j in i[2]:
             listOfWords.append(j)
-    print("after for loop call")
     a1,b1=most_frequent(listOfWords)
-    print("after return of a1,b1")
     return(a1,b1)
 
 #using the pyautogui library to automate my mouse to download a google docs file that has the link to my online class
 #the coordinates given here are strictly w.r.t my computer screen size and where i have placed my icons
 #to find your own coordinates, read the pyautogui documentation
+
+#The next five lines of code are used to find the time at which the code begings to execute
+a=time()
+
+
+#The clock function returns the amount of time that had passed since the code had begun execution in minutes
+def clock():
+    return (time()-a)//60
 
 def pyautoguiMoveClickSleep(x_,y_,dur_,pause_,):
     pyautogui.moveTo(x_,y_, duration=dur_)
