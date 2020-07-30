@@ -27,9 +27,16 @@ def returnMostCommonWord(imageName):
     listOfWords = []
     for i in x:
         for j in i[2]:
+
             listOfWords.append( j )
     a1, b1 = most_frequent( listOfWords )
     return a1, b1
+
+          
+
+
+
+
 
 
 def returnComparison(oldImage, newImage, opt):
