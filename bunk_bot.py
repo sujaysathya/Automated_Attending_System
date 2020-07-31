@@ -49,7 +49,7 @@ def answerAttendance():
 
 if __name__ == "__main__":
 
-    
+    #all the coordinates to go an download a google docs file with the meeting link
     x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6=690,1053,847,100,108,184,230,472,484,646,1917,0
     pyautogui.moveTo(x1,y1, duration=1)
     pyautogui.click()
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     pyautogui.moveTo(x6,y6, duration=0)
     pyautogui.click()
     
-    
+    #all the coordinates to go and open google meets 
     x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6,x7,y7,x8,y8,x9,y9,x10,y10=701,1049,1026,99,1160,569,1129,601,1179,727,617,815,715,814,1322,619,1322,619,1913,0
     fp = open(filelocation,"r+")
     link=fp.readline()
