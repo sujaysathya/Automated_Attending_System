@@ -49,7 +49,7 @@ def answerAttendance():
 
 if __name__ == "__main__":
 
-    '''
+    
     x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6=690,1053,847,100,108,184,230,472,484,646,1917,0
     pyautogui.moveTo(x1,y1, duration=1)
     pyautogui.click()
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     sleep(10)
     pyautogui.moveTo(x9,y9, duration=1)
     pyautogui.click()
-    sleep(10) '''
+    sleep(10) 
     sleep(10)
     winsound.PlaySound("sound.wav", winsound.SND_ASYNC | winsound.SND_ALIAS ) 
     im1 = pyautogui.screenshot("ss1.png")
