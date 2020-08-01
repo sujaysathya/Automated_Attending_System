@@ -117,7 +117,7 @@ if __name__ == "__main__":
         try:
             if(returnComparison("ss1.png", "ss2.png",1)>=5):
 
-                print("my name is inigo montya")
+                
                 a1,b1=returnMostCommonWord("ss2.png")
                 print(a1)
                 print(b1)
