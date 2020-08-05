@@ -160,10 +160,11 @@ if __name__ == "__main__":
                 MyText = MyText.lower() 
                 print("Did you say "+MyText) 
                 if(MyText.find("sujay")!=-1 or MyText.find("today")!=-1 or MyText.find("tujhe")!=-1 or MyText.find("sujoy")!=-1 or MyText.find("sachai")!=-1 or MyText.find("suji")!=-1):
-
+                  #change the strings from sujay to your name and like wise for any pronounciation of your name 
                     answerAttendance()
                 
                 if(MyText.find("one seventy four")!=-1 or MyText.find("74")!=-1 or  MyText.find("174")!=-1 or  MyText.find("7474")!=-1):
+                    #change the strings from one seventy four to your roll number
                     x11,y11,x12,y12,x13,y13=1625,156,1694,976,1872,985
                     answerAttendance()   
            
