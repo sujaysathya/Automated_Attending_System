@@ -7,7 +7,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/sujaysathya/bunk_bot)](https://github.com/sujaysathya/bunk_bot/issues)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?)](https://github.com/sujaysathya/bunk_bot/issues)
 
-
+Watch our YouTube tutorial on how to use this [here!](https://www.youtube.com/watch?v=fKa-_8R9auM)
 <p>The <b><i>Bunk Bot</i></b> is built on Python and its main purpose is to attend your online classes <i>for you</i>.
  
 This bot gets the meeting ID of your meeting from Google Docs (note: your friend can upload this for you if you can't) and opens Google Meet and logs in on your behalf.
@@ -75,8 +75,9 @@ Changes that you have to make to implement this on your computer are:<p\>
 These changes can be made in the global variables that is mentioned in the bunk_bot.py file. Can be found in the 15th line.
 
 #### Fixes and Patches:
-1)An unknown exception thrown during image processing has been handled.<br>  
-2)circular import error has been fixed 
+1) An unknown exception thrown during image processing has been handled.<br>  
+2) Circular import error has been fixed<br>
+3) Test files to check the working of the PyTesseract and Speech Recognition Libraries have been added to the folder Test Files. Use these to verify that you've downloaded them and that they're working.<br>
 
 #### Places to improve:
 Currently planning on making a ChatBot which can hopefully have full fleged conversations.\
