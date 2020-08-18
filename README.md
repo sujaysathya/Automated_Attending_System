@@ -6,6 +6,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/sujaysathya/bunk_bot?color=green)](https://github.com/sujaysathya/bunk_bot/network)
 [![GitHub issues](https://img.shields.io/github/issues/sujaysathya/bunk_bot)](https://github.com/sujaysathya/bunk_bot/issues)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?)](https://github.com/sujaysathya/bunk_bot/issues)
+![Views](https://komarev.com/ghpvc/?username=sujaysathya&color=blue&label=profile+views)
 
 Watch our YouTube tutorial on how to use this [here!](https://www.youtube.com/watch?v=fKa-_8R9auM)
 <p>The <b><i>Bunk Bot</i></b> is built on Python and its main purpose is to attend your online classes <i>for you</i>.
