@@ -9,7 +9,7 @@
 
 
 Watch our YouTube tutorial on how to use this [here!](https://www.youtube.com/watch?v=fKa-_8R9auM)
-<p>The <b><i>Bunk Bot</i></b> is built on Python and its main purpose is to attend your online classes <i>for you</i>.
+<p>The <b><i>Bunk Bot</i></b> is built on Python and its main purpose is to attend your online meetings/classes <i>for you</i>.
  
 This bot gets the meeting ID of your meeting from Google Docs (note: your friend can upload this for you if you can't) and opens Google Meet and logs in on your behalf.
 
