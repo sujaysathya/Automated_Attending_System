@@ -83,7 +83,7 @@ These changes can be made in the global variables that is mentioned in the bunk_
 #### Places to improve:
 Currently planning on making a ChatBot which can hopefully have full fleged conversations.\
 You can provide your suggestions on this [here.](https://github.com/sujaysathya/bunk_bot/issues/5)\
-Please contribute and make this better lads.
+Please contribute and make this better.
 
 <h3>PLEASE NOTE:</h3>
 <p>For legal reasons,<br>
