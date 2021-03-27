@@ -70,7 +70,7 @@ Changing the coordinates in PyAutoGUI is more than enough to implement this code
 Changes that you have to make to implement this on your computer are:<p\>
 
 1) Change all the coordinates that PyAutoGUI uses. Refer to `coordinate_finder.py` to find the coordinates which are suitable for you (if you didn't understand any of this, please read the PyAutoGUI documentation).<br>
-2) Change all the file paths.<br>
+2) Change the file paths.<br>
 3) Change the size of the crop in `crop=img1[280:911,1520:1900]` to `crop=img1[y1:y2,x1:x2]` where `x1`, `x2`, `y1` and `y2` are coordinates of the chatbox in the online classroom software (i.e Google Meet/ Zoom etc.)<br>
 
 These changes can be made in the global variables that is mentioned in the bunk_bot.py file. Can be found in the 15th line.
