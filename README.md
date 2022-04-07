@@ -10,7 +10,7 @@ This bot gets the meeting ID of your meeting from Google Docs (note: your friend
 
 It can use both Speech Recognition and Image Processing techniques to interact with other people in the meeting.
 
-Once the meeting is done, it closes the Google Chrome page and this process continues every time you have an online class to attend.
+Once the meeting is done, it closes the Google Chrome page and this process continues every time you have an online class .
 
 <i><b>Speech Recognition</b></i> is used to identify whether your enrollment number is being called out during attendance and the bot automatically types "present" in the chatbox.
 
